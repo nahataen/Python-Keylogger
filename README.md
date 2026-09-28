@@ -1,56 +1,50 @@
-# Keylogger
+# ⌨️ Práctica local educativa de keylogger — solo uso académico
 
-Práctica de Keylogger Local
+> Registra localmente las teclas pulsadas en tu propio equipo y las guarda en `logs.txt` con usuario, fecha y hora.
 
+## Qué hace
 
+`keylogger.py` (34 líneas, documenta lo existente; no se añade funcionalidad) usa la librería `keyboard`: `Pressed()` reacciona a `KEY_DOWN`, forma la línea `usuario - archivo - fecha: tecla` con `getpass.getuser()` y `time.asctime()`, y la anexa con `WriteToFile()` a `logs.txt` dentro de `folder_path`. El programa se queda en espera con `keyboard.on_press(...)` + `keyboard.wait()` hasta que lo detienes. La variable `folder_path` trae una ruta de ejemplo que debes cambiar por una carpeta tuya existente.
 
-## Descripción
+## Estructura
 
-Este proyecto es una práctica simple de un keylogger local en Python. El script registra las teclas presionadas y guarda la información en un archivo de registro, incluyendo el nombre de usuario, el nombre del archivo actual y la marca de tiempo de cada evento.
-
-## Capturas de Pantalla
-
-![Captura de pantalla 1](https://github.com/nahataen/keylogger/assets/4331964/26747272-0977-4d8c-a5f2-31f02ed5dbd7)
-![Captura de pantalla 2](https://github.com/nahataen/keylogger/assets/4331964/b0feebe6-e344-4572-baed-a5e18c56c3e0)
+```text
+local-keylogger-lab/
+├── keylogger.py  # WriteToFile(), Pressed(), keyboard.on_press + keyboard.wait();
+│                 # escribe logs.txt en folder_path (ruta de ejemplo a ajustar)
+└── README.md     # Este archivo
+```
 
 ## Requisitos
 
 - Python 3.x
-- Biblioteca `keyboard`
+- Librería `keyboard`
+- Ejecutar en **tu propio equipo**; en Windows suele requerir terminal con permisos de administrador para capturar teclas globales
 
-## Instalación
+## Cómo correr
 
-1. Clona el repositorio:
+```bash
+git clone https://github.com/nahataen/local-keylogger-lab.git
+cd local-keylogger-lab
+pip install keyboard
+```
 
-    ```bash
-    git clone https://github.com/nahataen/keylogger.git
-    cd keylogger
-    ```
-
-2. Instala la biblioteca `keyboard`:
-
-    ```bash
-    pip install keyboard
-    ```
-
-## Uso
-
-Ejecuta el script `keylogger.py` y el keylogger comenzará a registrar las teclas presionadas. El archivo de registro se guardará en la carpeta especificada.
+1. Edita `keylogger.py` y pon en `folder_path` una carpeta local existente (p. ej. `r"C:\Users\TuUsuario\Documents\lab"`). Crea la carpeta antes de ejecutar.
+2. Ejecuta:
 
 ```bash
 python keylogger.py
 ```
 
-Asegúrate de ajustar la variable `filename` en el script según tu preferencia.
+3. Pulsa teclas y revisa `logs.txt` en esa carpeta. Detén con `Ctrl + C`.
 
-## Colaboración
+## Notas
 
-¡Contribuciones son bienvenidas! Si encuentras problemas o mejoras, siéntete libre de abrir un [issue](https://github.com/nahataen/keylogger/issues) o enviar un [pull request](https://github.com/nahataen/keylogger/pulls).
+- Práctica mínima sin panel, sin exfiltración de red ni persistencia: solo escribe un `.txt` local.
+- Si `folder_path` no existe, el script falla al escribir; verifícalo antes de correr.
 
-## Autor
+## ⚠️ Uso responsable
 
-[Creado por Nahataen](https://github.com/nahataen)
-
----
-
-Este proyecto es solo con fines educativos y éticos. No se recomienda el uso de keyloggers para actividades maliciosas o ilegales.
+- **Exclusivamente educativo y local**: úsalo solo en tu propio equipo o en máquinas/laboratorios con consentimiento explícito por escrito.
+- No lo instales en equipos ajenos ni captures credenciales o datos de terceros: puede ser ilegal (delitos contra la privacidad / acceso ilícito según tu país).
+- No se aceptan contribuciones que añadan exfiltración, ocultamiento, persistencia o ejecución remota.
