@@ -24,8 +24,8 @@ local-keylogger-lab/
 ## Cómo correr
 
 ```bash
-git clone https://github.com/nahataen/local-keylogger-lab.git
-cd local-keylogger-lab
+git clone https://github.com/nahataen/Python-Keylogger.git
+cd Python-Keylogger
 pip install keyboard
 ```
 
